@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main'
+                git branch: 'main',
                    url: 'https://github.com/ManjimaBoruah/first-project.git'
 
                 // Run Maven on a Unix agent.
@@ -25,7 +25,7 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
+                    archiveArtifacts 'target/*.war'
                 }
             }
         }
